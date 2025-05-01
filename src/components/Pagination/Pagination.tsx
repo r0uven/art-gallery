@@ -2,6 +2,7 @@
 import { generateListOfPages } from "@/utils/generateListOfPages";
 import "./Pagination.scss";
 import { range } from "./constants";
+import React from "react";
 
 type PaginationProps = {
     onPageChange: (page: number) => void;
@@ -18,7 +19,9 @@ export function Pagination({ currentPage = 1, totalPages, onPageChange }: Pagina
     const pageNumbers = generateListOfPages(totalPages);
 
     // Обработка изменения страницы
-    const handlePageChange = (newPage: number) => {
+    const handlePageChange = (event: React.MouseEvent<HTMLButtonElement>) => {
+        const newPage = Number(event.currentTarget.dataset.clickHandle);
+
         if (newPage >= 1 && newPage <= totalPages) {
             onPageChange(newPage);
         }
@@ -33,7 +36,9 @@ export function Pagination({ currentPage = 1, totalPages, onPageChange }: Pagina
             <button
                 className="pagination-btn"
                 disabled={currentPage === 1}
-                onClick={() => handlePageChange(currentPage - 1)}
+
+                data-click-handle={currentPage - 1}
+                onClick={handlePageChange}
             >
                 Prev
             </button>
@@ -43,7 +48,9 @@ export function Pagination({ currentPage = 1, totalPages, onPageChange }: Pagina
                 <>
                     <button
                         className="pagination-btn"
-                        onClick={() => handlePageChange(1)}
+
+                        data-click-handle={1}
+                        onClick={handlePageChange}
                     >
                         1
                     </button>
@@ -55,7 +62,9 @@ export function Pagination({ currentPage = 1, totalPages, onPageChange }: Pagina
                 <button
                     key={pageNumber}
                     className={`pagination-btn ${currentPage === pageNumber ? 'active' : ''}`}
-                    onClick={() => handlePageChange(pageNumber)}
+
+                    data-click-handle={pageNumber}
+                    onClick={handlePageChange}
                 >
                     {pageNumber}
                 </button>
@@ -66,7 +75,9 @@ export function Pagination({ currentPage = 1, totalPages, onPageChange }: Pagina
                     {endPage < totalPages - 1 && <span className="pagination-ellipsis">...</span>}
                     <button
                         className="pagination-btn"
-                        onClick={() => handlePageChange(totalPages)}
+
+                        data-click-handle={totalPages}
+                        onClick={handlePageChange}
                     >
                         {totalPages}
                     </button>
@@ -76,7 +87,9 @@ export function Pagination({ currentPage = 1, totalPages, onPageChange }: Pagina
             <button
                 className="pagination-btn"
                 disabled={currentPage === totalPages}
-                onClick={() => handlePageChange(currentPage + 1)}
+
+                data-click-handle={currentPage+1}
+                onClick={handlePageChange}
             >
                 Next
             </button>
