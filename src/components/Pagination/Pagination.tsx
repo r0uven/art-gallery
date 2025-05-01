@@ -20,7 +20,7 @@ export function Pagination({ currentPage = 1, totalPages, onPageChange }: Pagina
 
     // Обработка изменения страницы
     const handlePageChange = (event: React.MouseEvent<HTMLButtonElement>) => {
-        const newPage = Number(event.currentTarget.dataset.clickHandle);
+        const newPage = Number(event.currentTarget.dataset.newPage);
 
         if (newPage >= 1 && newPage <= totalPages) {
             onPageChange(newPage);
@@ -37,7 +37,7 @@ export function Pagination({ currentPage = 1, totalPages, onPageChange }: Pagina
                 className="pagination-btn"
                 disabled={currentPage === 1}
 
-                data-click-handle={currentPage - 1}
+                data-new-page={currentPage - 1}
                 onClick={handlePageChange}
             >
                 Prev
@@ -49,7 +49,7 @@ export function Pagination({ currentPage = 1, totalPages, onPageChange }: Pagina
                     <button
                         className="pagination-btn"
 
-                        data-click-handle={1}
+                        data-new-page={1}
                         onClick={handlePageChange}
                     >
                         1
@@ -63,7 +63,7 @@ export function Pagination({ currentPage = 1, totalPages, onPageChange }: Pagina
                     key={pageNumber}
                     className={`pagination-btn ${currentPage === pageNumber ? 'active' : ''}`}
 
-                    data-click-handle={pageNumber}
+                    data-new-page={pageNumber}
                     onClick={handlePageChange}
                 >
                     {pageNumber}
@@ -76,7 +76,7 @@ export function Pagination({ currentPage = 1, totalPages, onPageChange }: Pagina
                     <button
                         className="pagination-btn"
 
-                        data-click-handle={totalPages}
+                        data-new-page={totalPages}
                         onClick={handlePageChange}
                     >
                         {totalPages}
@@ -88,7 +88,7 @@ export function Pagination({ currentPage = 1, totalPages, onPageChange }: Pagina
                 className="pagination-btn"
                 disabled={currentPage === totalPages}
 
-                data-click-handle={currentPage+1}
+                data-new-page={currentPage+1}
                 onClick={handlePageChange}
             >
                 Next
