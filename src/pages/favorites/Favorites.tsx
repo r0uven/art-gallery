@@ -6,6 +6,7 @@ import type { PreviewCard } from '@/store/types/CardType';
 import { FAVORITES_LS_KEY } from '@/constants/constants';
 import { CardLink } from '@/components/Card/CardLink';
 
+
 export function Favorites() {
     const [favorites, setFavorites] = useState<PreviewCard[]>([]);
 
@@ -31,4 +32,5 @@ export function Favorites() {
             )}
         </div>
     );
+
 }

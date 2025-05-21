@@ -3,6 +3,7 @@ import "../header/header.scss";
 import { navItems } from "./constants";
 import { ROUTES } from "@/constants/routes";
 import logoMuseum from "@/layout/header/icon/logo-museum.png";
+
 import {useAuth} from "@/context/AuthContext.tsx";
 import {LogoutButton} from "@/pages/Logout/Logout.tsx";
 
@@ -37,4 +38,5 @@ export function Header() {
             </nav>
         </header>
     );
+
 }

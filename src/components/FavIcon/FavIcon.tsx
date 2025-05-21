@@ -1,3 +1,4 @@
+
 import { ReactComponent as FavIconSVG } from '@/assets/FavIcon.svg?react';
 import favStyle from '@/components/FavIcon/FavIcon.module.scss';
 
@@ -14,3 +15,4 @@ export function FavIcon({isFavorite}: FavIconProps ) {
       </div>
     );
 };
+
